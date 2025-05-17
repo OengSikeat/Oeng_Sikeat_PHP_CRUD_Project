@@ -1,5 +1,5 @@
 <?php
-// File: staff.php
+
 session_start();
 require_once 'config/database.php';
 require_once 'api/staff.php';
@@ -12,6 +12,7 @@ if (!isset($_SESSION['user_id'])) {
 $staffAPI = new StaffAPI();
 $search = $_GET['search'] ?? '';
 $staff = $staffAPI->getStaff($search);
+
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['staff_action'])) {
     try {
         $staffAPI = new StaffAPI();
@@ -33,6 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['staff_action'])) {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['staff_action'])) {
 </head>
 <body class="bg-gray-100 font-sans">
 <div class="flex min-h-screen">
-    <!-- Sidebar -->
+
     <div class="bg-gray-800 text-white w-64 space-y-6 py-7 px-2 fixed h-full">
         <div class="text-2xl font-bold text-center">Stock Manager</div>
         <nav>
@@ -56,19 +58,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['staff_action'])) {
         </nav>
     </div>
 
-    <!-- Main Content -->
+
     <div class="ml-64 p-8 w-full">
         <div class="max-w-6xl mx-auto">
             <h1 class="text-3xl font-bold mb-6">Staff Management</h1>
 
-            <!-- Staff Filter -->
+
             <form method="GET" class="mb-6">
                 <input type="text" name="search" value="<?php echo htmlspecialchars($search); ?>"
                        placeholder="Search by name"
                        class="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
             </form>
 
-            <!-- Staff Table -->
+
             <div class="bg-white rounded-lg shadow overflow-hidden">
                 <table class="w-full">
                     <thead class="bg-gray-50">
@@ -123,7 +125,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['staff_action'])) {
                 </table>
             </div>
 
-            <!-- Add Staff Form -->
+
             <div class="mt-8 bg-white p-6 rounded-lg shadow">
                 <h2 class="text-xl font-semibold mb-4">Add New Staff</h2>
                 <form method="POST" class="space-y-4">
@@ -157,3 +159,4 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['staff_action'])) {
 </div>
 </body>
 </html>
+?>

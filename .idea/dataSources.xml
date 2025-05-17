@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="php@localhost" uuid="d7fb2460-bbc9-4008-a981-9f0d415c9099">
+    <data-source source="LOCAL" name="defaultdb@pg-1df2f6e4-oengsikeat-4249.l.aivencloud.com" uuid="d7fb2460-bbc9-4008-a981-9f0d415c9099">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://localhost:5432/php</jdbc-url>
+      <jdbc-url>jdbc:postgresql://pg-1df2f6e4-oengsikeat-4249.l.aivencloud.com:14190/defaultdb?ssl=require</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="if0_38982710_php@localhost" uuid="e481cab7-bcd2-47c0-aed3-be9fe833f730">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/if0_38982710_php</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

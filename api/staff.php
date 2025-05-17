@@ -1,4 +1,5 @@
 <?php
+
 class StaffAPI {
     private ?PDO $pdo;
 
@@ -7,7 +8,7 @@ class StaffAPI {
     }
 
     public function getStaff($search = '') {
-        $stmt = $this->pdo->prepare("SELECT * FROM staff WHERE name ILIKE ?");
+        $stmt = $this->pdo->prepare("SELECT * FROM staff WHERE name LIKE ?");
         $stmt->execute(["%$search%"]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -27,3 +28,4 @@ class StaffAPI {
         return $stmt->execute([$id]);
     }
 }
+?>

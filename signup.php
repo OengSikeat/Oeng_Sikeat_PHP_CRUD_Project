@@ -1,5 +1,5 @@
 <?php
-// File: signup.php
+
 session_start();
 require_once 'config/database.php';
 
@@ -16,6 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,3 +61,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </div>
 </body>
 </html>
+?>

@@ -16,18 +16,13 @@ $startDate = $_GET['start_date'] ?? '';
 $endDate = $_GET['end_date'] ?? '';
 $purchases = $purchaseAPI->getPurchases($startDate, $endDate);
 $stocks = $stockAPI->getStocks();
+
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['purchase_action'])) {
     try {
         $purchaseAPI = new PurchaseAPI();
         switch ($_POST['purchase_action']) {
             case 'add':
                 $purchaseAPI->addPurchase($_POST['stock_id'], $_POST['quantity'], $_POST['price']);
-                break;
-            case 'update':
-                $purchaseAPI->updatePurchase($_POST['id'], $_POST['stock_id'], $_POST['quantity'], $_POST['price']);
-                break;
-            case 'delete':
-                $purchaseAPI->deletePurchase($_POST['id']);
                 break;
         }
         header("Location: purchases.php");
@@ -37,6 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['purchase_action'])) {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['purchase_action'])) {
 </head>
 <body class="bg-gray-100 font-sans">
 <div class="flex min-h-screen">
-    <!-- Sidebar -->
+
     <div class="bg-gray-800 text-white w-64 space-y-6 py-7 px-2 fixed h-full">
         <div class="text-2xl font-bold text-center">Stock Manager</div>
         <nav>
@@ -60,12 +56,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['purchase_action'])) {
         </nav>
     </div>
 
-    <!-- Main Content -->
+
     <div class="ml-64 p-8 w-full">
         <div class="max-w-6xl mx-auto">
             <h1 class="text-3xl font-bold mb-6">Purchase Management</h1>
 
-            <!-- Purchase Filter -->
+
             <form method="GET" class="flex gap-4 mb-6">
                 <input type="date" name="start_date" value="<?php echo htmlspecialchars($startDate); ?>"
                        class="p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
@@ -77,7 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['purchase_action'])) {
                 </button>
             </form>
 
-            <!-- Purchase Table -->
+
             <div class="bg-white rounded-lg shadow overflow-hidden">
                 <table class="w-full">
                     <thead class="bg-gray-50">
@@ -103,7 +99,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['purchase_action'])) {
                 </table>
             </div>
 
-            <!-- Add Purchase Form -->
+
             <div class="mt-8 bg-white p-6 rounded-lg shadow">
                 <h2 class="text-xl font-semibold mb-4">Add New Purchase</h2>
                 <form method="POST" class="space-y-4">
@@ -143,3 +139,4 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['purchase_action'])) {
 </div>
 </body>
 </html>
+?>

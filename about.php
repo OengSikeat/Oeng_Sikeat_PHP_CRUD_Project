@@ -1,7 +1,7 @@
 <?php
-// File: about.php
 session_start();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +13,6 @@ session_start();
 </head>
 <body class="bg-gray-100 font-sans">
 <div class="flex min-h-screen">
-    <!-- Sidebar -->
     <div class="bg-gray-800 text-white w-64 space-y-6 py-7 px-2 fixed h-full">
         <div class="text-2xl font-bold text-center">Stock Manager</div>
         <nav>
@@ -25,12 +24,11 @@ session_start();
         </nav>
     </div>
 
-    <!-- Main Content -->
     <div class="ml-64 p-8 w-full">
         <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow">
             <h1 class="text-3xl font-bold mb-6">About Stock Manager</h1>
             <div class="space-y-4 text-gray-700">
-                <p>This Stock Management System is a comprehensive solution built with PHP, PostgreSQL, and Tailwind CSS.</p>
+                <p>This Stock Management System is a comprehensive solution built with PHP, MySQL, and Tailwind CSS.</p>
                 <p>Key features include:</p>
                 <ul class="list-disc pl-6 space-y-2">
                     <li>Stock inventory management with CRUD operations</li>
@@ -48,3 +46,4 @@ session_start();
 </div>
 </body>
 </html>
+?>

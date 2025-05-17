@@ -7,7 +7,7 @@ class StockAPI {
     }
 
     public function getStocks($search = '', $filter = '') {
-        $query = "SELECT * FROM stocks WHERE name ILIKE ?";
+        $query = "SELECT * FROM stocks WHERE name LIKE ?";
         $params = ["%$search%"];
 
         if ($filter !== '') {
@@ -35,3 +35,4 @@ class StockAPI {
         return $stmt->execute([$id]);
     }
 }
+?>

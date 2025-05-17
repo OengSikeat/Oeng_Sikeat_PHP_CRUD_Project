@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 require_once 'config/database.php';
 require_once 'api/stocks.php';
@@ -14,7 +15,7 @@ $stockAPI = new StockAPI();
 $staffAPI = new StaffAPI();
 $purchaseAPI = new PurchaseAPI();
 
-// Handle stock actions
+
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['stock_action'])) {
     try {
         switch ($_POST['stock_action']) {
@@ -35,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['stock_action'])) {
     }
 }
 
-// Handle staff actions
+
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['staff_action'])) {
     try {
         switch ($_POST['staff_action']) {
@@ -56,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['staff_action'])) {
     }
 }
 
-// Handle purchase actions
+
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['purchase_action'])) {
     try {
         if ($purchaseAPI->addPurchase($_POST['stock_id'], $_POST['quantity'], $_POST['price'])) {
@@ -74,6 +75,7 @@ $search = $_GET['search'] ?? '';
 $filter = $_GET['filter'] ?? '';
 $stocks = $stockAPI->getStocks($search, $filter);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -85,7 +87,7 @@ $stocks = $stockAPI->getStocks($search, $filter);
 </head>
 <body class="bg-gray-100 font-sans">
 <div class="flex min-h-screen">
-    <!-- Sidebar -->
+
     <div class="bg-gray-800 text-white w-64 space-y-6 py-7 px-2 fixed h-full">
         <div class="text-2xl font-bold text-center">Stock Manager</div>
         <nav>
@@ -97,7 +99,7 @@ $stocks = $stockAPI->getStocks($search, $filter);
         </nav>
     </div>
 
-    <!-- Main Content -->
+
     <div class="ml-64 p-8 w-full">
         <div class="max-w-6xl mx-auto">
             <?php if (isset($error)): ?>
@@ -108,7 +110,7 @@ $stocks = $stockAPI->getStocks($search, $filter);
 
             <h1 class="text-3xl font-bold mb-6">Stock Management</h1>
 
-            <!-- Stock Filter -->
+
             <form method="GET" class="flex gap-4 mb-6">
                 <input type="text" name="search" value="<?php echo htmlspecialchars($search); ?>"
                        placeholder="Search by name"
@@ -122,7 +124,7 @@ $stocks = $stockAPI->getStocks($search, $filter);
                 </button>
             </form>
 
-            <!-- Stock Table -->
+
             <div class="bg-white rounded-lg shadow overflow-hidden">
                 <table class="w-full">
                     <thead class="bg-gray-50">
@@ -167,7 +169,7 @@ $stocks = $stockAPI->getStocks($search, $filter);
                 </table>
             </div>
 
-            <!-- Add Stock Form -->
+
             <div class="mt-8 bg-white p-6 rounded-lg shadow">
                 <h2 class="text-xl font-semibold mb-4">Add New Stock</h2>
                 <form method="POST" class="space-y-4">
@@ -195,3 +197,4 @@ $stocks = $stockAPI->getStocks($search, $filter);
 </div>
 </body>
 </html>
+?>
